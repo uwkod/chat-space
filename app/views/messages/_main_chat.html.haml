@@ -1,0 +1,34 @@
+.main-chat
+  .header
+    .header__left-box
+      .header__left-box__current-group
+        aaaaa
+      .header__left-box__member-box
+        .header__left-box__member-box__member-list  
+          Member:
+          .header__left-box__member-box__member-name
+            kodai
+    .header__group-edit
+      = link_to "#" do
+        .header__group-edit__btn
+          Edit
+  .main
+    .main__user-name
+      kodai
+      .main__user-name__date
+        2020/04/15(wed) 15:09
+    .main__user-message
+      おはよう
+    .main__user-name
+      kodai
+      .main__user-name__date
+        2020/04/15(wed) 15:09
+  
+  .form
+    %form.new-message
+      .input-box
+        %input{type: "text", class:"input-box__text",placeholder:"type a message"}
+        %label{class:"input-box__image"}
+          = icon('fas','image')
+          %input{type:"file",class:"input-box__image__file"}
+      %input{type:"submit",class:"submit-btn"}    
