@@ -2,15 +2,16 @@
 .side-bar
   .side-bar__header
     .side-bar__header__box
+      = current_user.name
       %p.side-bar__header__box__name
-        kodai
+        
       %ul.side-bar__header__box__icon
         %li.side-bar__header__box__edit-user
           = link_to "#" do
             = icon('fas','edit')
         %li.side-bar__header__box__new-group 
-          = link_to "#" do
-            = icon('fas','cog')
+          = link_to edit_user_path(current_user) do
+            = icon('fas', 'cog', class: 'icon')
 
   .groups
     = link_to "#",class:"group-link" do
