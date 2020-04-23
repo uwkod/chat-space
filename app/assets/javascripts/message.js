@@ -32,7 +32,6 @@ $(function(){
     };
   }
   $('#new_message').on('submit', function(e){
-    console.log('hoge')
     e.preventDefault()
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -54,6 +53,6 @@ $(function(){
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
-  });
+    });
   });
 });
