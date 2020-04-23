@@ -44,9 +44,10 @@
   background-color: #2f3e51;
   height: calc(100% - 100px);
   padding: 20px;
-  .group-link {
+  a {
     text-decoration: none;
   .group {
+    overflow: scroll;
     color: #ffffff;
     margin-bottom: 40px;
     padding-top: 20px;
