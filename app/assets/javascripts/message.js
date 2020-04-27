@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       var html =
-       `
+       `<div class="main-box" data-message-id = ${message.id}>
           <div class="main__user-name">
             ${message.user_name}
           </div>
@@ -13,11 +13,13 @@ $(function(){
             ${message.content}
           </div>
          <img src=${message.image} >
+         </div>
         ` 
       return html;
     } else {
       var html =
        `
+       <div class="main-box" data-message-id = ${message.id}>
           <div class="main__user-name">
             ${message.user_name}
           </div>
@@ -26,6 +28,7 @@ $(function(){
           </div>
           <div class="main__user-message">
             ${message.content}
+          </div>
           </div>
         `
       return html;
@@ -37,9 +40,9 @@ $(function(){
     var url = $(this).attr('action');
     $.ajax({
     
-      url: "api/messages",
-      type: "get",
-      data: {id: last_message_id},
+      url: url,
+      type: "POST",
+      data: formData,
       dataType: 'json',
       processData: false,
       contentType: false
@@ -54,10 +57,13 @@ $(function(){
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
+    })
     });
-    funciton reloadMessages(){
+
+   
         var reloadMessages = function() {
-          var last_message_id = $('.message:last').data("message-id");
+          var last_message_id = $('.main-box:last').data("message-id");
+          
           $.ajax({
             url: "api/messages",
             type: 'get',
@@ -65,13 +71,14 @@ $(function(){
             data: {id: last_message_id}
           })
           .done(function(messages) {
+            console.log(messages);
             if (messages.length !== 0) {
             var insertHTML = '';
             $.each(messages, function(i, message) {
               insertHTML += buildHTML(message)
             });
-            $('.messages').append(insertHTML);
-            $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+            $('.main').append(insertHTML);
+            $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
           }
           })
           .fail(function() {
@@ -80,4 +87,5 @@ $(function(){
         };
         if (document.location.href.match(/\/groups\/\d+\/messages/)) {
         setInterval(reloadMessages, 7000);
-      });
+      };
+  });
