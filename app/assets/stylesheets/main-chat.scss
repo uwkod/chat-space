@@ -37,10 +37,14 @@
    
   &__group-edit {
     font-size: 16px;
-    margin: 20 20 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     width: 72px;
     border: 1px solid #38aef0;
-    padding: 15px 20px;
+    padding: 0px 20px;
+    height: 40px;
+    line-height: 40px;
+    right: 40px;
     a {
      text-decoration: none;
      color: #38aef0;
@@ -58,14 +62,19 @@
   padding-bottom: 46px;
   padding-left: 40px;
   overflow: scroll;
-  &__user-name {
-    color: #333333;
-    font-size: 16px;
+  .main-box-data {
     display: flex;
-    &__date {
-      color: #999999;
-      font-size: 12px;
-    }
+
+    &__user-name { 
+      color: #434a54;
+      font-size: 16px;
+      font-weight: bold;
+   }
+    &__user-data {
+    color: #999999;
+    font-size: 12px;
+    margin-left: 10px;
+  }
   }
   &__user-message {
     font-size: 14px;

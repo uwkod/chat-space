@@ -3,12 +3,14 @@ $(function(){
     if ( message.image ) {
       var html =
        `<div class="main-box" data-message-id = ${message.id}>
-          <div class="main__user-name">
+         <div class="main-box-data">
+          <div class="main-box-data__user-name">
             ${message.user_name}
           </div>
-          <div class="main__user-name__date">
+          <div class="main-box-data__user-data">
             ${message.created_at}
           </div>
+        </div>  
           <div class="main__user-message">
             ${message.content}
           </div>
@@ -20,12 +22,14 @@ $(function(){
       var html =
        `
        <div class="main-box" data-message-id = ${message.id}>
-          <div class="main__user-name">
+         <div class="main-box-data">
+          <div class="main-box-data__user-name">
             ${message.user_name}
           </div>
-          <div class="main__user-name__date">
+          <div class="main-box-data__user-data">
             ${message.created_at}
           </div>
+        </div>  
           <div class="main__user-message">
             ${message.content}
           </div>
@@ -39,7 +43,7 @@ $(function(){
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $.ajax({
-    
+   
       url: url,
       type: "POST",
       data: formData,
@@ -63,7 +67,7 @@ $(function(){
    
         var reloadMessages = function() {
           var last_message_id = $('.main-box:last').data("message-id");
-          
+          console.log(last_message_id)
           $.ajax({
             url: "api/messages",
             type: 'get',
@@ -71,7 +75,6 @@ $(function(){
             data: {id: last_message_id}
           })
           .done(function(messages) {
-            console.log(messages);
             if (messages.length !== 0) {
             var insertHTML = '';
             $.each(messages, function(i, message) {
